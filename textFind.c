@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "TextFindClass.h"
 
 /*This function receives a string from standard input and saves it in the variable "s".
 Will return the length of the line.
@@ -16,6 +17,8 @@ int getline(char s[])
         s[count] = c;
         count++;
     }
+
+    s[count + 1] = "\0";
     return count;
 }
 
@@ -32,9 +35,11 @@ int getword(char w[])
         if(c == '\n' || c == '\t' || c == ' '){
             break;
         }
-        s[count] = c;
+        w[count] = c;
         count++;
     }
+
+    w[count + 1] = "\0";
     return count;
 }
 
@@ -90,7 +95,7 @@ int similar (char *s, char *t, int n)
 
     while (p_s)
     {
-        p_s++
+        p_s++;
         count++;
     }
 
@@ -108,7 +113,15 @@ Will print all lines that include the string 'str'.
 */
 void print_lines(char * str)
 {
-
+    char * input[LINE];
+    while (getline(input))
+    {
+        if(substring(input, str))
+        {
+            printf("%s\n", input);
+        }
+    }
+    
 }
 
 /*This function receives a string, 'str', which is the text to be searched for.
@@ -116,5 +129,12 @@ It also receives words of text as input, using 'getword' function.
 Will print all words that can be transformed into 'str' by removing one character.*/
 void print_similar_words(char * str)
 {
-
+    char * input[WORD];
+    while (getword(input))
+    {
+        if(similar(input, str, 1) || similar(input, str, 0))
+        {
+            printf("%s\n", input);
+        }
+    }
 }
