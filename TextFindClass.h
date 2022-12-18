@@ -5,7 +5,7 @@
 Will return the length of the line.
 The maximum allowed size of a string is 256 characters.
 Will be terminated by a newline character "\n"*/
-int getline(char s[]);
+int getline1(char s[]);
 
 /*This function receives a string from standard input and saves it in the variable "w".
 Will return the length of the word.

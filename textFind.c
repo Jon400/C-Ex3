@@ -1,15 +1,15 @@
-#include <stdio.h>
 #include "TextFindClass.h"
+#include <stdio.h>
 
 /*This function receives a string from standard input and saves it in the variable "s".
 Will return the length of the line.
 The maximum allowed size of a string is 256 characters.
 Will be terminated by a newline character "\n"*/
-int getline(char s[])
+int getline1(char s[])
 {
     char c;
     int count = 0;
-    while (scanf("%c", c) != EOF)
+    while (scanf("%c", &c) != EOF)
     {
         if(c == '\n'){
             break;
@@ -18,7 +18,7 @@ int getline(char s[])
         count++;
     }
 
-    s[count + 1] = "\0";
+    s[count] = '\0';
     return count;
 }
 
@@ -30,7 +30,7 @@ int getword(char w[])
 {
     char c;
     int count = 0;
-    while (scanf("%c", c) != EOF)
+    while (scanf("%c", &c) != EOF)
     {
         if(c == '\n' || c == '\t' || c == ' '){
             break;
@@ -39,7 +39,7 @@ int getword(char w[])
         count++;
     }
 
-    w[count + 1] = "\0";
+    w[count + 1] = '\0';
     return count;
 }
 
@@ -47,10 +47,10 @@ int getword(char w[])
 Will return whether 'str2' is a substring of 'str1'. */
 int substring( char * str1, char * str2)
 {
-    int * p_str1 = str1;
-    int * p_str2 = str2;
+    char * p_str1 = str1;
+    char * p_str2 = str2;
 
-    while (p_str1 && p_str2)
+    while (*p_str1 && *p_str2)
     {
         if (*p_str1 == *p_str2)
         {
@@ -62,11 +62,11 @@ int substring( char * str1, char * str2)
         p_str2 = str2;
     }
 
-    if (p_str1)
+    if (*p_str1)
     {
         return 1;
     }
-    else if (p_str2)
+    else if (*p_str2)
     {
         return 0;
     }
@@ -82,7 +82,7 @@ int similar (char *s, char *t, int n)
     char * p_t = t;
     int count = 0;
 
-    while (p_s && p_t)
+    while (*p_s && *p_t)
     {
         if (*p_s == *p_t)
         {
@@ -93,13 +93,13 @@ int similar (char *s, char *t, int n)
         p_s++;
     }
 
-    while (p_s)
+    while (*p_s)
     {
         p_s++;
         count++;
     }
 
-    if(p_t)
+    if(*p_t)
     {
         return 0;
     } 
@@ -113,14 +113,15 @@ Will print all lines that include the string 'str'.
 */
 void print_lines(char * str)
 {
-    char * input[LINE];
-    while (getline(input))
+    char input[LINE];
+    while (getline1(input))
     {
         if(substring(input, str))
         {
             printf("%s\n", input);
         }
     }
+
     
 }
 
@@ -129,7 +130,7 @@ It also receives words of text as input, using 'getword' function.
 Will print all words that can be transformed into 'str' by removing one character.*/
 void print_similar_words(char * str)
 {
-    char * input[WORD];
+    char input[WORD];
     while (getword(input))
     {
         if(similar(input, str, 1) || similar(input, str, 0))
