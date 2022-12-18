@@ -39,7 +39,7 @@ int getword(char w[])
         count++;
     }
 
-    w[count + 1] = '\0';
+    w[count] = '\0';
     return count;
 }
 
@@ -81,6 +81,7 @@ int similar (char *s, char *t, int n)
     char * p_s = s;
     char * p_t = t;
     int count = 0;
+    
 
     while (*p_s && *p_t)
     {
@@ -91,6 +92,7 @@ int similar (char *s, char *t, int n)
             continue;
         }
         p_s++;
+        count++;
     }
 
     while (*p_s)
