@@ -6,7 +6,7 @@
 int main()
 {
     char c, type_of_action;
-    char w[WORD + 1];
+    char w[WORD + 1] = "";
     int i = 0;
 
     scanf("%c", &c);

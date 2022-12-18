@@ -45,11 +45,11 @@ int getword(char w[])
 
 /*The function will receive two strings, 'str1' and 'str2.
 Will return whether 'str2' is a substring of 'str1'. */
-int substring( char * str1, char * str2)
+int substring(char * str1, char * str2)
 {
     char * p_str1 = str1;
     char * p_str2 = str2;
-
+    
     while (*p_str1 && *p_str2)
     {
         if (*p_str1 == *p_str2)
