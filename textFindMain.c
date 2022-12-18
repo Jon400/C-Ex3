@@ -32,4 +32,5 @@ int main()
         print_similar_words(w);
     }
       
+    return 0;
 }
