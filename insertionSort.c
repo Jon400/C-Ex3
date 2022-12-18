@@ -20,7 +20,7 @@ void insertion_sort(int* arr , int len)
     size_t i;
     for (i = 0; i < len - 1; i++)
     {
-        if (*arr + i > *(arr + i + 1))
+        if (*(arr + i) > *(arr + i + 1))
         {
             int * p_temp = (arr + i + 1);
             int tempVal = *(arr + i + 1);
