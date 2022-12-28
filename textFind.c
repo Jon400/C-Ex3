@@ -32,7 +32,7 @@ int getword(char w[])
     int count = 0;
     while (scanf("%c", &c) != EOF)
     {
-        if(c == '\n' || c == '\t' || c == ' '){
+        if(c == '\n' || c == '\t' || c == ' ' || c == '\r'){
             break;
         }
         w[count] = c;
@@ -115,7 +115,7 @@ Will print all lines that include the string 'str'.
 */
 void print_lines(char * str)
 {
-    char input[LINE];
+    char input[LINE + 1];
     while (getline1(input))
     {
         if(substring(input, str))
@@ -132,7 +132,7 @@ It also receives words of text as input, using 'getword' function.
 Will print all words that can be transformed into 'str' by removing one character.*/
 void print_similar_words(char * str)
 {
-    char input[WORD];
+    char input[WORD + 1];
     while (getword(input))
     {
         if(similar(input, str, 1) || similar(input, str, 0))
