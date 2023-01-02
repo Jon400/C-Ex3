@@ -32,7 +32,7 @@ int getword(char w[])
     int count = 0;
     while (scanf("%c", &c) != EOF)
     {
-        if(c == '\n' || c == '\t' || c == ' ' || c == '\r'){
+        if(c == '\n' || c == '\t' || c == ' '){
             break;
         }
         w[count] = c;
